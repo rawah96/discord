@@ -9,6 +9,7 @@ import { refreshTokenSetup } from './utils/refreshToken';
 import './components/Login/Login.css'
 import discord from './discord.png'
 import {In, out} from './features/userSlice'
+import Logout from './components/Login/Logout'
 
 const clientId = "304788118855-l4frhratrtujhhlkq20482an60okom01.apps.googleusercontent.com"
 const onSuccess = (res) => {
@@ -37,7 +38,10 @@ function App() {
         // get email
       }))
     } else {
-      console.log('not signed in')
+      dispatch(out({
+        displayName: name,
+      }
+      ))
     }
   }, [name])
 
@@ -46,6 +50,7 @@ function App() {
       {user ? <>
         <Sidebar />
         <Chat />
+        <Logout />
       </>:<>
       <div className="login">
           <img src={discord} alt=""/>

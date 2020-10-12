@@ -10,8 +10,13 @@ import Avatar from '@material-ui/core/Avatar'
 import MicIcon from '@material-ui/icons/Mic'
 import HeadsetIcon from '@material-ui/icons/Headset'
 import SettingsIcon from '@material-ui/icons/Settings'
+import {selectUser} from '../../features/userSlice'
+import {useSelector} from 'react-redux'
 
 function Sidebar() {
+    const user = useSelector(selectUser);
+    console.log(user);
+
     return (
         <div className="sidebar">
             <div className="sidebar-top">
@@ -51,7 +56,7 @@ function Sidebar() {
                 <div className="sidebar-profile">
                     <Avatar />
                     <div className="profile-info">
-                        <h3>@Rawah-alsinan</h3>
+                        <h3>@{user.displayName}</h3>
                         <p>#thisIsMyId</p>
                     </div>
 
